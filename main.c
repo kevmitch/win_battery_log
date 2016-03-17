@@ -88,7 +88,7 @@ int main(int argc,char* argv[])
         goto done;
     }
     CloseHandle(ProcessInfo.hThread);
-    printf("filename = %s\n", filename);
+
     fp = fopen(filename, "w");
     if (!fp) {
         printf("ERROR: Failed to open output file %s\n", filename);
