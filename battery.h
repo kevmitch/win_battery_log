@@ -19,7 +19,7 @@
 #include <stdbool.h>
 #include <SetupAPI.h>
 #include <batclass.h>
-#include <devguid.h>
+
 struct battery {
     SP_DEVICE_INTERFACE_DATA did;
     PSP_DEVICE_INTERFACE_DETAIL_DATA pdidd;

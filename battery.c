@@ -18,6 +18,7 @@
 #include <initguid.h>
 #include <windows.h>
 #include <time.h>
+#include <devguid.h>
 
 #include "battery.h"
 
