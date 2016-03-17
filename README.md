@@ -1,6 +1,6 @@
 ## win_battery_log
 
-This is a small command line utility to measure and record the battery
+This is a small command line utility to measure and record battery
 statistics in Microsoft Windows. It should report the battery charge or
 discharge rate in milliwatts, the voltage in millivolts and for each
 measurement, the number of seconds since recording began. It was written to
@@ -14,13 +14,13 @@ battery conservation is important.
 With no arguments, it simply prints these statistics to the console every two
 seconds until interrupted.
 
-    win_battery_log.exe
+    win_battery_log
 
 It can also be used to measure the battery statistics while running a given
 command by simply adding that command and its argumets as arguments to the
 win_battery_log executable. For example:
 
-    win_battery_log.exe C:\windows\notepad.exe textfile.txt
+    win_battery_log C:\windows\notepad.exe textfile.txt
 
 win_battery_log will open a log file named by sanitizing the given commandline
 into a file-friendly string by replacing special characters with "-" and spaces
