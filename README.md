@@ -24,7 +24,8 @@ win_battery_log executable. For example:
 
 win_battery_log will open a log file named by sanitizing the given commandline
 into a file-friendly string by replacing special characters with "-" and spaces
-with "_". It will write battery statistics to this file until the command exits.
+with "_" and appending the Unix time in seconds followed by the ".log" suffix.
+It will write battery statistics to this file until the command exits.
 
 ## Compilation
 
