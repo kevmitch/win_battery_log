@@ -19,5 +19,5 @@ enum cmdline_build_mode {
     CMDLINE_CREATE_PROCESS,
     CMDLINE_LOG_FILENAME,
 };
+
 char *cmdline_build(int argc, char *argv[], enum cmdline_build_mode mode);
-void fix_log_filename(char *pos);

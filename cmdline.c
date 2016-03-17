@@ -15,7 +15,6 @@
  * along with win_battery_log.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -53,6 +52,24 @@ static int append_to_cmdline(char **pos, size_t rem, char *arg,
     return added;
 }
 
+static void fix_log_filename(char *pos)
+{
+    const char allowed[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_,.;";
+    if (pos && pos[0] &&
+        (pos[0] == '.' || pos[0] == '-'))
+        pos[0] = '_';
+
+    size_t rem = strlen(pos);
+    while (true) {
+        size_t offset = strspn(pos, allowed);
+        if (rem <= offset)
+            return;
+        rem -= offset;
+        pos += offset;
+        pos[0] = '-';
+    }
+}
+
 char *cmdline_build(int argc, char *argv[], enum cmdline_build_mode mode)
 {
     if (argc <= 1)
@@ -86,23 +103,8 @@ char *cmdline_build(int argc, char *argv[], enum cmdline_build_mode mode)
 
     rem -= append_to_cmdline(&pos, rem, suffix, mode, true);
 
+    if (mode == CMDLINE_LOG_FILENAME)
+        fix_log_filename(cmdline);
+
     return cmdline;
-}
-
-void fix_log_filename(char *pos)
-{
-    const char allowed[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_,.;";
-    if (pos && pos[0] &&
-        (pos[0] == '.' || pos[0] == '-'))
-        pos[0] = '_';
-
-    size_t rem = strlen(pos);
-    while (true) {
-        size_t offset = strspn(pos, allowed);
-        if (rem <= offset)
-            return;
-        rem -= offset;
-        pos += offset;
-        pos[0] = '-';
-    }
 }

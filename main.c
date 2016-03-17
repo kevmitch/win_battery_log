@@ -79,8 +79,6 @@ int main(int argc,char* argv[])
     if (!filename)
         goto done;
 
-    fix_log_filename(filename);
-
     if (!CreateProcessA(NULL, cmdline, NULL,
                         NULL,FALSE,0,NULL, NULL,
                         &StartupInfo,&ProcessInfo)) {
